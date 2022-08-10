@@ -6,10 +6,14 @@
           &nbsp;
         </i>
         <strong routerLink="/product" style="font-size: 25px; cursor: pointer">Flipkart</strong>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search products">
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="searchKey" (keyup)="search($event)" placeholder="Search products">
+          <div class="input-group-append">
+            <button class="btn btn-secondary" type="button">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
         </div>
-        <span class="fas fa-search search-icon"></span>
       </div>
       <a routerLink="cart">
         <button class="btn btn-primary">

@@ -16,10 +16,23 @@ export class CartService {
     this.productList.next(product);
   }
   addtoCart(product : any){
-    this.cartItemList.push(product);
+    console.log(product);
+    let index=this.cartItemList.findIndex((each: any) =>
+      each.title == product.title
+    );
+    console.log(index);
+    if(index == -1){
+      this.cartItemList.push(product);
+    }else{
+      this.cartItemList[index].quantity += 1;
+      this.cartItemList[index].total = this.cartItemList[index].quantity 
+      * this.cartItemList[index].price;
+    }
+    
+    
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
-    console.log(this.cartItemList);
+   
 
   }
   getTotalPrice(): number {
